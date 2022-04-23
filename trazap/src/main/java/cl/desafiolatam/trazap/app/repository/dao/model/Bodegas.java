@@ -1,4 +1,4 @@
-package cl.desafiolatam.trazap.app.repository.model;
+package cl.desafiolatam.trazap.app.repository.dao.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

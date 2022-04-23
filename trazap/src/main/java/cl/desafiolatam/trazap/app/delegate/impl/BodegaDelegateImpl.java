@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import cl.desafiolatam.trazap.app.delegate.BodegaDelegate;
-import cl.desafiolatam.trazap.app.repository.model.Bodegas;
+import cl.desafiolatam.trazap.app.repository.dao.model.Bodegas;
 import cl.desafiolatam.trazap.app.service.BodegaService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 

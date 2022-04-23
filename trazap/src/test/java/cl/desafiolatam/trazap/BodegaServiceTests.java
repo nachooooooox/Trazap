@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import cl.desafiolatam.trazap.app.repository.model.Bodegas;
+import cl.desafiolatam.trazap.app.repository.dao.model.Bodegas;
 import cl.desafiolatam.trazap.app.service.BodegaService;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessage;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceMessageType;

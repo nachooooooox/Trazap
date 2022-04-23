@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import cl.desafiolatam.trazap.app.repository.BodegaRepository;
-import cl.desafiolatam.trazap.app.repository.model.Bodegas;
+import cl.desafiolatam.trazap.app.repository.dao.model.Bodegas;
 
 @SpringBootApplication
 public class TrazapApplication {
