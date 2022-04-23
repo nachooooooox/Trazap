@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="modeloDatos" nm="newDb" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>C:\Users\ctapia\Desktop</DocFolder>
+  <Sch Cm="" nm="public">
+    <Tbl UsSo="1" nm="Bodegas">
+      <TblOpts/>
+      <Pk ClNs="idBodegas" nm="pkBodegas"/>
+      <Cl au="1" df="" nm="idBodegas" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Bodegas_has_Productos">
+      <TblOpts/>
+      <Cl au="0" df="" nm="idProducto" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idBodegas" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Bodegas_has_Productos_Bodegas" prLkCl="idBodegas" upAc="3">
+        <PrTb mn="0" nm="Bodegas" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Bodegas_has_Productos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idBodegas" prCl="idBodegas"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_Bodegas_has_Productos_Productos" prLkCl="idProducto" upAc="3">
+        <PrTb mn="0" nm="Productos" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Bodegas_has_Productos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idProducto" prCl="idProducto"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Categorias">
+      <TblOpts/>
+      <Pk ClNs="idCategoria" nm="pkCategorias"/>
+      <Cl au="1" df="" nm="idCategoria" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Menus">
+      <TblOpts/>
+      <Pk ClNs="idMenu" nm="pkMenus"/>
+      <Cl au="1" df="" nm="idMenu" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idPerfil" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="url" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Menus_Perfiles" prLkCl="idPerfil" upAc="3">
+        <PrTb mn="0" nm="Perfiles" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Menus" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idPerfil" prCl="idPerfil"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Pedido_has_Productos">
+      <TblOpts/>
+      <Cl au="0" df="" nm="idPedido" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idProducto" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Pedido_has_Productos_Pedidos" prLkCl="idPedido" upAc="3">
+        <PrTb mn="0" nm="Pedidos" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Pedido_has_Productos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idPedido" prCl="idPedido"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_Pedido_has_Productos_Productos" prLkCl="idProducto" upAc="3">
+        <PrTb mn="0" nm="Productos" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Pedido_has_Productos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idProducto" prCl="idProducto"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Pedidos">
+      <TblOpts/>
+      <Pk ClNs="idPedido" nm="pkPedidos"/>
+      <Cl au="0" df="" nm="idPedido" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idUser" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fechaCreacion" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="totalProductos" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Pedidos_Users" prLkCl="idUser" upAc="3">
+        <PrTb mn="0" nm="Users" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Pedidos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idUser" prCl="idUser"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Perfiles">
+      <TblOpts/>
+      <Pk ClNs="idPerfil" nm="pkPerfiles"/>
+      <Cl au="1" df="" nm="idPerfil" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idUser" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Perfiles_Users" prLkCl="idUser" upAc="3">
+        <PrTb mn="0" nm="Users" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Perfiles" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idUser" prCl="idUser"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Productos">
+      <TblOpts/>
+      <Pk ClNs="idProducto" nm="pkProductos"/>
+      <Cl au="1" df="" nm="idProducto" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idTipoProducto" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idCategoria" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Productos_Categorias" prLkCl="idCategoria" upAc="3">
+        <PrTb mn="0" nm="Categorias" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Productos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idCategoria" prCl="idCategoria"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_Productos_TipoProductos" prLkCl="idTipoProducto" upAc="3">
+        <PrTb mn="0" nm="TipoProductos" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Productos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idTipoProducto" prCl="idTipoProducto"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Seguimientos">
+      <TblOpts/>
+      <Pk ClNs="idSeguimiento" nm="pkSeguimientos"/>
+      <Cl au="1" df="" nm="idSeguimiento" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="idPedido" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fechaInicioPreparacion" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fechaFinPreparacion" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fechaEstimadaEnvio" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fechaEnvio" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="trackingNumber" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="estado" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Seguimientos_Pedidos" prLkCl="idPedido" upAc="3">
+        <PrTb mn="0" nm="Pedidos" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="Seguimientos" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idPedido" prCl="idPedido"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="TipoProductos">
+      <TblOpts/>
+      <Pk ClNs="idTipoProducto" nm="pkTipoProductos"/>
+      <Cl au="1" df="" nm="idTipoProducto" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Users">
+      <TblOpts/>
+      <Pk ClNs="idUser" nm="pkUsers"/>
+      <Cl au="1" df="" nm="idUser" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombreUsuario" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="correo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="true" FtSz="12" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>BarkerErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <Dgm nm="ModelProductos">
+    <RnCf ClkAct="true" FtSz="12" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>BarkerErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Menus" x="1093" y="40"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Perfiles" x="682" y="74"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Users" x="396" y="26"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Pedidos" x="100" y="314"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Seguimientos" x="66" y="38"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Productos" x="1124" y="193"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Categorias" x="373" y="474"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="TipoProductos" x="405" y="601"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Bodegas_has_Productos" x="1196" y="415"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Bodegas" x="1212" y="571"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Pedido_has_Productos" x="638" y="335"/>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.Bodegas_has_Productos.fk_Bodegas_has_Productos_Bodegas" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1303" x2="1303" y1="571" y2="489"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.Bodegas_has_Productos.fk_Bodegas_has_Productos_Productos" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="1355" x2="1355" y1="299" y2="415"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.Menus.fk_Menus_Perfiles" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="918" x2="1093" y1="121" y2="121"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.Pedido_has_Productos.fk_Pedido_has_Productos_Pedidos" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="332" x2="638" y1="361" y2="361"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.Pedido_has_Productos.fk_Pedido_has_Productos_Productos" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="1124" x2="832" y1="260" y2="260"/>
+        <positionableLine lineRole="CHILD_LINE" x1="828" x2="828" y1="335" y2="264"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.Pedidos.fk_Pedidos_Users" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="477" x2="477" y1="148" y2="315"/>
+        <positionableLine lineRole="CHILD_LINE" x1="332" x2="473" y1="319" y2="319"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.Perfiles.fk_Perfiles_Users" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="658" x2="834" y1="31" y2="31"/>
+        <positionableLine lineRole="CHILD_LINE" x1="838" x2="838" y1="74" y2="35"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.Productos.fk_Productos_Categorias" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="612" x2="1125" y1="513" y2="513"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1129" x2="1129" y1="299" y2="509"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.Productos.fk_Productos_TipoProductos" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="PARENT_LINE" x1="664" x2="1125" y1="617" y2="617"/>
+        <positionableLine lineRole="CHILD_LINE" x1="1129" x2="1129" y1="299" y2="613"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.Seguimientos.fk_Seguimientos_Pedidos" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="211" x2="211" y1="314" y2="208"/>
+      </positionableLines>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Menus" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idMenu" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Perfiles" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idPerfil" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm nNm="Users" oNm="User"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Users" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idUser" oNm="idUsers"/>
+      <Rnm nNm="idUsers" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm nNm="Menus" oNm="Menu"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm nNm="Perfiles" oNm="Perfil"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Pedidos" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idPedido" oNm="idPedidos"/>
+      <Rnm nNm="idPedidos" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Seguimientos" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idSeguimiento" oNm="idSeguimientos"/>
+      <Rnm nNm="idSeguimientos" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Productos" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idProducto" oNm="idProductos"/>
+      <Rnm nNm="idProductos" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Categorias" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idCategoria" oNm="idCategorias"/>
+      <Rnm nNm="idCategorias" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="TipoProductos" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idTipoProducto" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Bodegas" SupCls="Schema" SupNme="public">
+      <Rnm nNm="idBodegas" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Seguimientos" SupCls="Schema" SupNme="public">
+      <Rnm nNm="trackingNumber" oNm="TrackingNumber"/>
+      <Rnm nNm="TrackingNumber" oNm="Traking"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Seguimientos" SupCls="Schema" SupNme="public">
+      <Rnm nNm="fechaEnvio" oNm="FechaEnvio"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="Seguimientos" SupCls="Schema" SupNme="public">
+      <Rnm nNm="fechaEstimadaEnvio" oNm="FechaEstimadaEnvio"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.ModelProductos" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+  </TreePaths>
+  <SqlTexts/>
+</Db>
