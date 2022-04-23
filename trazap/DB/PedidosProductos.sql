@@ -1,7 +1,5 @@
 /************ Update: Schemas ***************/
 
-/* Add Schema: public */
-CREATE SCHEMA public;
 
 
 /************ Add: Sequences ***************/
@@ -199,14 +197,6 @@ CREATE TABLE "public"."Users"
 /* Add Primary Key */
 ALTER TABLE "public"."Users" ADD CONSTRAINT "pkUsers"
 	PRIMARY KEY ("idUser");
-
-
-
-/* Remove Schemas */
-
-DROP SCHEMA "schemaA" CASCADE;
-
-
 
 
 /************ Add Foreign Keys ***************/
