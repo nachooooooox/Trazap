@@ -125,20 +125,12 @@
       <Cl au="1" df="" nm="idPerfil" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
-      <Cl au="0" df="" nm="idUser" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
       <Cl au="0" df="" nm="nombre" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="descripcion" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
       </Cl>
-      <Fk deAc="3" nm="fk_Perfiles_Users" prLkCl="idUser" upAc="3">
-        <PrTb mn="0" nm="Users" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="Perfiles" oe="1" sch="public" zr="0"/>
-        <ClPr cdCl="idUser" prCl="idUser"/>
-      </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
@@ -235,6 +227,14 @@
       <Cl au="0" df="" nm="correo" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
       </Cl>
+      <Cl au="0" df="" nm="idPerfil" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Users_Perfiles" prLkCl="idPerfil" upAc="3">
+        <PrTb mn="0" nm="Perfiles" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="Users" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="idPerfil" prCl="idPerfil"/>
+      </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
@@ -287,8 +287,8 @@
       <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
       <svg path=""/>
     </DiaProps>
-    <TbGl bkCl="ff4c78ff" sch="public" tbl="Menus" x="1093" y="40"/>
-    <TbGl bkCl="ff4c78ff" sch="public" tbl="Perfiles" x="682" y="74"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Menus" x="1201" y="37"/>
+    <TbGl bkCl="ff4c78ff" sch="public" tbl="Perfiles" x="806" y="53"/>
     <TbGl bkCl="ff4c78ff" sch="public" tbl="Users" x="396" y="26"/>
     <TbGl bkCl="ff4c78ff" sch="public" tbl="Pedidos" x="100" y="314"/>
     <TbGl bkCl="ff4c78ff" sch="public" tbl="Seguimientos" x="66" y="38"/>
@@ -310,7 +310,7 @@
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="public.Menus.fk_Menus_Perfiles" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="SINGLE_LINE" x1="918" x2="1093" y1="121" y2="121"/>
+        <positionableLine lineRole="SINGLE_LINE" x1="1042" x2="1201" y1="101" y2="101"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="WEST" nm="public.Pedido_has_Productos.fk_Pedido_has_Productos_Pedidos" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
@@ -326,14 +326,8 @@
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="EAST" nm="public.Pedidos.fk_Pedidos_Users" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
       <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="477" x2="477" y1="148" y2="315"/>
+        <positionableLine lineRole="PARENT_LINE" x1="477" x2="477" y1="164" y2="315"/>
         <positionableLine lineRole="CHILD_LINE" x1="332" x2="473" y1="319" y2="319"/>
-      </positionableLines>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="NORTH" nm="public.Perfiles.fk_Perfiles_Users" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
-      <positionableLines>
-        <positionableLine lineRole="PARENT_LINE" x1="658" x2="834" y1="31" y2="31"/>
-        <positionableLine lineRole="CHILD_LINE" x1="838" x2="838" y1="74" y2="35"/>
       </positionableLines>
     </FkGl>
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.Productos.fk_Productos_Categorias" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
@@ -351,6 +345,11 @@
     <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.Seguimientos.fk_Seguimientos_Pedidos" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
       <positionableLines>
         <positionableLine lineRole="SINGLE_LINE" x1="211" x2="211" y1="314" y2="208"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.Users.fk_Users_Perfiles" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="806" x2="658" y1="98" y2="98"/>
       </positionableLines>
     </FkGl>
     <Notes/>
