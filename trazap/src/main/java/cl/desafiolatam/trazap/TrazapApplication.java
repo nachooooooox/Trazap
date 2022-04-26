@@ -11,7 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import cl.desafiolatam.trazap.app.repository.BodegaRepository;
+import cl.desafiolatam.trazap.app.repository.CategoriasRepository;
 import cl.desafiolatam.trazap.app.repository.dao.model.Bodegas;
+import cl.desafiolatam.trazap.app.repository.dao.model.Categorias;
 
 @SpringBootApplication
 public class TrazapApplication {
@@ -20,6 +22,9 @@ public class TrazapApplication {
 	
 	@Autowired
 	private BodegaRepository bodegaRepository;
+	
+	@Autowired
+	private CategoriasRepository categoriasRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(TrazapApplication.class, args);
@@ -51,6 +56,16 @@ public class TrazapApplication {
 			}
 			
 			
+		};
+	}
+	
+	@Bean
+	public CommandLineRunner findAllCategorias() {
+		return (args) -> {
+			Iterator<Categorias> itCategoria = categoriasRepository.findAll().iterator();
+			while(itCategoria.hasNext()) {
+				logger.info(itCategoria.next().toString());
+			}
 		};
 	}
 	
