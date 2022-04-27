@@ -9,14 +9,14 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Categorias")
-@SequenceGenerator(name = "Categorias_idCategoria_seq", initialValue = 1, allocationSize = 1, sequenceName = "Categorias_idCategoria_seq")
+@Table(name = "\"categorias\"", schema = "public")
+@SequenceGenerator(name = "categorias_id_categoria_seq", initialValue = 1, allocationSize = 1, sequenceName = "categorias_id_categoria_seq")
 public class Categorias {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Categorias_idCategoria_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categorias_id_categoria_seq")
 	//la siguiente columna no es necesaria si "column" y el "atributo" tienen el mismo nombre
-	@Column(name = "idCategoria")
+	@Column(name = "id_categoria")
 	private int idCategoria;
 	private String nombre;
 	
