@@ -28,7 +28,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public ResponseServiceObject finAll() {
 		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		
 		Iterable<Usuario> itUsuario = usuarioRepository.findAll();
 		itUsuario.forEach(usuarios::add);
 		System.out.println(itUsuario);
