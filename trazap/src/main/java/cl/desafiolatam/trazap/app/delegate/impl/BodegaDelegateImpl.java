@@ -24,5 +24,20 @@ public class BodegaDelegateImpl implements BodegaDelegate {
 		return bodegaService.save(bodega);
 	}
 
+	@Override
+	public ResponseServiceObject findById(Integer idBodega) {
+		return bodegaService.findById(idBodega);
+	}
+
+	@Override
+	public ResponseServiceObject update(Bodegas bodegas, Integer idBodega) {
+		return bodegaService.update(bodegas, idBodega);
+	}
+
+	@Override
+	public ResponseServiceObject delete(Integer idBodega) {
+		return bodegaService.delete(idBodega);
+	}
+
 
 }

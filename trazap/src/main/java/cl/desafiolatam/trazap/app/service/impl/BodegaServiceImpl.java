@@ -66,4 +66,58 @@ public class BodegaServiceImpl implements BodegaService{
 		return responseServiceObject;
 	}
 
+	@Override
+	public ResponseServiceObject findById(Integer idBodega) {
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		
+		responseServiceObject.setBody(bodegaRepository.findById(idBodega));
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMessage("Registro con Id " + idBodega);
+		
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setMessageList(messageList);
+		
+		return responseServiceObject;
+	}
+
+	@Override
+	public ResponseServiceObject update(Bodegas bodegas, Integer idBodega) {
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		bodegas.setIdBodega(idBodega);
+		responseServiceObject.setBody(bodegaRepository.save(bodegas));
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMessage("Registro actualizado correctamente");
+		
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setMessageList(messageList);
+		
+		return responseServiceObject;
+	}
+
+	@Override
+	public ResponseServiceObject delete(Integer idBodega) {
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		
+		bodegaRepository.deleteById(idBodega);
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMessage("Registro eliminado correctamente");
+		
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setMessageList(messageList);
+		
+		return responseServiceObject;
+	}
+
 }
