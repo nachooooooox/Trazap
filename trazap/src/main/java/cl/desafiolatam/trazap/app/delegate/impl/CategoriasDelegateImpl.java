@@ -21,8 +21,8 @@ public class CategoriasDelegateImpl implements CategoriasDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject findById(Integer idCategorias) throws ServiceException {
-		return CategoriasService.findById(idCategorias);
+	public ResponseServiceObject findById(Integer idCategoria) throws ServiceException {
+		return CategoriasService.findById(idCategoria);
 	}
 
 	@Override
@@ -31,13 +31,13 @@ public class CategoriasDelegateImpl implements CategoriasDelegate{
 	}
 
 	@Override
-	public ResponseServiceObject update(Integer idCategorias, Categorias categorias) {
-		return CategoriasService.update(idCategorias, categorias);
+	public ResponseServiceObject update(Integer idCategorias, Categorias categoria) {
+		return CategoriasService.update(idCategorias, categoria);
 	}
 
 	@Override
-	public ResponseServiceObject delete(Integer idCategorias) {
-		return CategoriasService.delete(idCategorias);
+	public ResponseServiceObject delete(Integer idCategoria) {
+		return CategoriasService.delete(idCategoria);
 	}
 
 }
