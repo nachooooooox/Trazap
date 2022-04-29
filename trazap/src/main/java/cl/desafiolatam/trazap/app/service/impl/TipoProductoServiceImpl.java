@@ -65,4 +65,54 @@ public class TipoProductoServiceImpl  implements TipoProductoService{
 		
 		return responseServiceObject;
 	}
+	@Override
+	public ResponseServiceObject findById(Integer idTipoProducto) {
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		
+		responseServiceObject.setBody(tipoProductoRepository.findById(idTipoProducto));
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMessage("Búsqueda finalizada del id " + idTipoProducto);
+		
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setMessageList(messageList);
+		return responseServiceObject;
+	}
+	@Override
+	public ResponseServiceObject update(TipoProducto tipoProducto, Integer idTipoProducto) {
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		tipoProducto.setIdTipoProducto(idTipoProducto);
+		
+		responseServiceObject.setBody(tipoProductoRepository.save(tipoProducto));
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.OK);
+		responseServiceMessage.setMessage("Registro actualizado correctamente");
+		
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setMessageList(messageList);
+		return responseServiceObject;
+	}
+	@Override
+	public ResponseServiceObject delete(Integer idTipoProducto) {
+		List<ResponseServiceMessage> messageList = new ArrayList<ResponseServiceMessage>();
+		
+		tipoProductoRepository.deleteById(idTipoProducto);
+		
+		responseServiceMessage.setTimestamp(new Date());
+		responseServiceMessage.setCode("200");
+		responseServiceMessage.setType(ResponseServiceMessageType.ERROR);
+		responseServiceMessage.setMessage("Registro eliminado correctamente");
+
+		messageList.add(responseServiceMessage);
+		
+		responseServiceObject.setMessageList(messageList);
+
+		return responseServiceObject;
+	}
 }
