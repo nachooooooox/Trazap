@@ -51,13 +51,13 @@ public class CategoriasServiceImpl implements CategoriasService {
 	}
 
 	@Override
-	public ResponseServiceObject findById(Integer idCategorias) {
+	public ResponseServiceObject findById(Integer idCategoria) {
 		this.messageList = new ArrayList<ResponseServiceMessage>();
 		Categorias categorias = new Categorias();
 		responseServiceMessage.setTimestamp(new Date());
 		
 		try {
-			categorias = categoriasRepository.findById(idCategorias).get();
+			categorias = categoriasRepository.findById(idCategoria).get();
 			
 			responseServiceMessage.setCode("200");
 			responseServiceMessage.setType(ResponseServiceMessageType.OK);
@@ -71,7 +71,7 @@ public class CategoriasServiceImpl implements CategoriasService {
 		}catch(NoSuchElementException ex) {
 			responseServiceMessage.setCode("404");
 			responseServiceMessage.setType(ResponseServiceMessageType.OK);
-			responseServiceMessage.setMessage("No existen registros con el ID " + idCategorias);
+			responseServiceMessage.setMessage("No existen registros con el ID " + idCategoria);
 			
 			this.messageList.add(responseServiceMessage);
 			responseServiceObject.setMessageList(messageList);
@@ -100,9 +100,9 @@ public class CategoriasServiceImpl implements CategoriasService {
 	}
 
 	@Override
-	public ResponseServiceObject update(Integer idCategorias, Categorias categorias) {
+	public ResponseServiceObject update(Integer idCategoria, Categorias categorias) {
 		this.messageList = new ArrayList<ResponseServiceMessage>();
-		categorias.setIdCategoria(idCategorias);
+		categorias.setIdCategoria(idCategoria);
 		responseServiceObject.setBody(categoriasRepository.save(categorias));
 		
 		responseServiceMessage.setTimestamp(new Date());
@@ -118,9 +118,9 @@ public class CategoriasServiceImpl implements CategoriasService {
 	}
 
 	@Override
-	public ResponseServiceObject delete(Integer idCategorias) {
+	public ResponseServiceObject delete(Integer idCategoria) {
 		this.messageList = new ArrayList<ResponseServiceMessage>();
-		categoriasRepository.deleteById(idCategorias);
+		categoriasRepository.deleteById(idCategoria);
 		
 		responseServiceMessage.setTimestamp(new Date());
 		responseServiceMessage.setCode("200");

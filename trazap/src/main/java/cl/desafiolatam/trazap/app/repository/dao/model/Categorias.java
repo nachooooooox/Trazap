@@ -15,7 +15,6 @@ public class Categorias {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categorias_id_categoria_seq")
-	//la siguiente columna no es necesaria si "column" y el "atributo" tienen el mismo nombre
 	@Column(name = "id_categoria")
 	private int idCategoria;
 	private String nombre;
