@@ -12,8 +12,12 @@ import org.springframework.context.annotation.Bean;
 
 import cl.desafiolatam.trazap.app.repository.BodegaRepository;
 import cl.desafiolatam.trazap.app.repository.CategoriasRepository;
+import cl.desafiolatam.trazap.app.repository.PerfilRepository;
+import cl.desafiolatam.trazap.app.repository.TipoProductoRepository;
 import cl.desafiolatam.trazap.app.repository.dao.model.Bodegas;
 import cl.desafiolatam.trazap.app.repository.dao.model.Categorias;
+import cl.desafiolatam.trazap.app.repository.dao.model.Perfil;
+import cl.desafiolatam.trazap.app.repository.dao.model.TipoProducto;
 
 @SpringBootApplication
 public class TrazapApplication {
@@ -25,6 +29,12 @@ public class TrazapApplication {
 	
 	@Autowired
 	private CategoriasRepository categoriasRepository;
+	
+	@Autowired
+	private PerfilRepository perfilRepository;
+	
+	@Autowired
+	private TipoProductoRepository tipoProductoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(TrazapApplication.class, args);
@@ -39,33 +49,44 @@ public class TrazapApplication {
 			bodega2.setDescripcion("MI BODEGA 2");
 			bodegaRepository.save(bodega1);
 			bodegaRepository.save(bodega2);
-			logger.info(bodega1.toString());
-			logger.info(bodega2.toString());
 		};
 	}
 	
 	@Bean
-	public CommandLineRunner findAllBodega() {
+	public CommandLineRunner createCategorias() {
 		return (args) -> {
-			Bodegas bodega = new Bodegas();
-			bodega.setDescripcion("MI BODEGA");
-			Iterator<Bodegas> itBodega = bodegaRepository.findAll().iterator();
-			
-			while(itBodega.hasNext()) {
-				logger.info(itBodega.next().toString());
-			}
-			
-			
+			Categorias categorias1 = new Categorias();
+			categorias1.setNombre("Categoría 1");
+			categoriasRepository.save(categorias1);
+			Categorias categorias2 = new Categorias();
+			categorias2.setNombre("Categoria 2");
+			categoriasRepository.save(categorias2);
 		};
 	}
 	
 	@Bean
-	public CommandLineRunner findAllCategorias() {
+	public CommandLineRunner createPerfil() {
 		return (args) -> {
-			Iterator<Categorias> itCategoria = categoriasRepository.findAll().iterator();
-			while(itCategoria.hasNext()) {
-				logger.info(itCategoria.next().toString());
-			}
+			Perfil perfil1 = new Perfil();
+			perfil1.setNombre("Home");
+			perfil1.setDescripcion("Inicio del Sistema desde el proyecto");
+			perfilRepository.save(perfil1);
+			Perfil perfil2 = new Perfil();
+			perfil2.setNombre("Bodegas");
+			perfil2.setDescripcion("Sistema de gestión de bodegas");
+			perfilRepository.save(perfil2);
+		};
+	}
+	
+	@Bean
+	public CommandLineRunner createTipoProducto() {
+		return (args) -> {
+			TipoProducto tipoProducto1 = new TipoProducto();
+			tipoProducto1.setDescripcion("Descripcion 1");
+			tipoProductoRepository.save(tipoProducto1);
+			TipoProducto tipoProducto2 = new TipoProducto();
+			tipoProducto2.setDescripcion("Descripción 2");
+			tipoProductoRepository.save(tipoProducto2);
 		};
 	}
 	
