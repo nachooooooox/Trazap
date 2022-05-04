@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,23 +22,14 @@ public class Usuario {
 	private String password;
 	@Column(name = "nombre_usuario")
 	private String nombreUsuario;
-	private String correo;
-	@Column(name = "id_perfil")
-	private int idPerfil;
+	private String email;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_perfil")
+	private Perfil perfil;
 	
 	public Usuario() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Usuario(int idUser, String nombre, String password, String nombreUsuario, String correo, int idPerfil) {
-		super();
-		this.idUser = idUser;
-		this.nombre = nombre;
-		this.password = password;
-		this.nombreUsuario = nombreUsuario;
-		this.correo = correo;
-		this.idPerfil = idPerfil;
 	}
 	
 	public Integer getIdUser() {
@@ -64,16 +57,21 @@ public class Usuario {
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-	public String getCorreo() {
-		return correo;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setCorreo(String correo) {
-		this.correo = correo;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public int getIdPerfil() {
-		return idPerfil;
+
+	public Perfil getPerfil() {
+		return perfil;
 	}
-	public void setIdPerfil(int idPerfil) {
-		this.idPerfil = idPerfil;
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
+
 }
