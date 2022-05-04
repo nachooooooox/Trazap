@@ -19,11 +19,11 @@ public class CustomAuthenticationSuccesHandler implements AuthenticationSuccessH
 		Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 		
 		if(roles.contains("ROLE_ADMIN")) {
-			response.sendRedirect("/admin");
+			response.sendRedirect("/trazap/admin");
 		}else if (roles.contains("ROLE_USER")){
-			response.sendRedirect("/user");
+			response.sendRedirect("/trazap/user");
 		}else {
-			response.sendRedirect("/prov");
+			response.sendRedirect("/trazap/prov");
 		}
 		
 	}

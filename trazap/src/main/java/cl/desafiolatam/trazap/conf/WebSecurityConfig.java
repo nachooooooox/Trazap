@@ -24,9 +24,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-												.antMatchers("/admin/**").hasAnyRole("ADMIN")
-												.antMatchers("/proveedor/**").hasRole("PROV")
-												.antMatchers("/user/**").hasRole("USER")
+												.antMatchers("/trazap/admin/**").hasRole("ADMIN")
+												.antMatchers("/trazap/proveedor/**").hasRole("PROV")
+												.antMatchers("/trazap/user/**").hasRole("USER")
 												.antMatchers("/login").permitAll()
 												.anyRequest()
 												.authenticated()
@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Bean
-	public UserDetailsService userDetalis() {
+	public UserDetailsService userDetailsService() {
 		return new AuthServiceImpl();
 	}
 }
