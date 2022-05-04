@@ -1,7 +1,5 @@
 package cl.desafiolatam.trazap;
 
-import java.util.Iterator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +7,19 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import cl.desafiolatam.trazap.app.repository.BodegaRepository;
 import cl.desafiolatam.trazap.app.repository.CategoriasRepository;
 import cl.desafiolatam.trazap.app.repository.PerfilRepository;
 import cl.desafiolatam.trazap.app.repository.TipoProductoRepository;
+import cl.desafiolatam.trazap.app.repository.UsuarioRepository;
 import cl.desafiolatam.trazap.app.repository.dao.model.Bodegas;
 import cl.desafiolatam.trazap.app.repository.dao.model.Categorias;
 import cl.desafiolatam.trazap.app.repository.dao.model.Perfil;
 import cl.desafiolatam.trazap.app.repository.dao.model.TipoProducto;
+import cl.desafiolatam.trazap.app.repository.dao.model.Usuario;
 
 @SpringBootApplication
 public class TrazapApplication {
@@ -35,6 +37,12 @@ public class TrazapApplication {
 	
 	@Autowired
 	private TipoProductoRepository tipoProductoRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(TrazapApplication.class, args);
@@ -87,6 +95,27 @@ public class TrazapApplication {
 			TipoProducto tipoProducto2 = new TipoProducto();
 			tipoProducto2.setDescripcion("Descripción 2");
 			tipoProductoRepository.save(tipoProducto2);
+		};
+	}
+	
+	@Bean
+	public CommandLineRunner createUsuario() {
+		return (args) -> {
+			Usuario usuarioAdmin = new Usuario();
+			Perfil perfil = new Perfil();
+			
+			perfil.setNombre("ADMIN");
+			
+			perfilRepository.save(perfil);
+			
+			usuarioAdmin.setNombre("bob");
+			usuarioAdmin.setNombreUsuario("bob");
+			usuarioAdmin.setEmail("admin");
+			usuarioAdmin.setPassword(passwordEncoder.encode("1234"));
+			usuarioAdmin.setPerfil(perfil);
+			
+			usuarioRepository.save(usuarioAdmin);
+			
 		};
 	}
 	
