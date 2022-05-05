@@ -25,25 +25,25 @@ import cl.desafiolatam.trazap.app.repository.dao.model.Usuario;
 public class TrazapApplication {
 
 	private final static Logger logger = LoggerFactory.getLogger(TrazapApplication.class);
-	
+
 	@Autowired
 	private BodegaRepository bodegaRepository;
-	
+
 	@Autowired
 	private CategoriasRepository categoriasRepository;
-	
+
 	@Autowired
 	private PerfilRepository perfilRepository;
-	
+
 	@Autowired
 	private TipoProductoRepository tipoProductoRepository;
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(TrazapApplication.class, args);
 	}
@@ -59,7 +59,7 @@ public class TrazapApplication {
 			bodegaRepository.save(bodega2);
 		};
 	}
-	
+
 	@Bean
 	public CommandLineRunner createCategorias() {
 		return (args) -> {
@@ -71,21 +71,7 @@ public class TrazapApplication {
 			categoriasRepository.save(categorias2);
 		};
 	}
-	
-	@Bean
-	public CommandLineRunner createPerfil() {
-		return (args) -> {
-			Perfil perfil1 = new Perfil();
-			perfil1.setNombre("Home");
-			perfil1.setDescripcion("Inicio del Sistema desde el proyecto");
-			perfilRepository.save(perfil1);
-			Perfil perfil2 = new Perfil();
-			perfil2.setNombre("Bodegas");
-			perfil2.setDescripcion("Sistema de gestión de bodegas");
-			perfilRepository.save(perfil2);
-		};
-	}
-	
+
 	@Bean
 	public CommandLineRunner createTipoProducto() {
 		return (args) -> {
@@ -97,26 +83,63 @@ public class TrazapApplication {
 			tipoProductoRepository.save(tipoProducto2);
 		};
 	}
-	
+
 	@Bean
 	public CommandLineRunner createUsuario() {
 		return (args) -> {
+			
+			//ADMIN
+			
 			Usuario usuarioAdmin = new Usuario();
 			Perfil perfil = new Perfil();
-			
+
 			perfil.setNombre("ADMIN");
-			
+
 			perfilRepository.save(perfil);
-			
+
 			usuarioAdmin.setNombre("bob");
 			usuarioAdmin.setNombreUsuario("bob");
 			usuarioAdmin.setEmail("admin");
 			usuarioAdmin.setPassword(passwordEncoder.encode("1234"));
 			usuarioAdmin.setPerfil(perfil);
-			
+
 			usuarioRepository.save(usuarioAdmin);
 			
+			//USER
+			
+			Usuario usuarioUser = new Usuario();
+			Perfil perfil2 = new Perfil();
+			
+			perfil2.setNombre("USER");
+
+			perfilRepository.save(perfil2);
+
+			usuarioUser.setNombre("bab");
+			usuarioUser.setNombreUsuario("bab");
+			usuarioUser.setEmail("user");
+			usuarioUser.setPassword(passwordEncoder.encode("1234"));
+			usuarioUser.setPerfil(perfil2);
+
+			usuarioRepository.save(usuarioUser);
+			
+			//PROV
+			
+			Usuario usuarioProv = new Usuario();
+			Perfil perfil3 = new Perfil();
+			
+			perfil3.setNombre("USER");
+
+			perfilRepository.save(perfil3);
+
+			usuarioProv.setNombre("beb");
+			usuarioProv.setNombreUsuario("beb");
+			usuarioProv.setEmail("prov");
+			usuarioProv.setPassword(passwordEncoder.encode("1234"));
+			usuarioProv.setPerfil(perfil3);
+
+			usuarioRepository.save(usuarioProv);
+
 		};
 	}
-	
+
 }

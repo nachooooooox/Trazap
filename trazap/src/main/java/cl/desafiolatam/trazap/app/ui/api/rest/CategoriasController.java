@@ -19,7 +19,7 @@ import cl.desafiolatam.trazap.app.repository.dao.model.Categorias;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/admin/categorias")
 public class CategoriasController {
 	
 	@Autowired
