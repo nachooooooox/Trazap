@@ -36,17 +36,15 @@
 	<div class="container">
 		<c:if test="${listaMateriales.size() > 0}">
 			<div class="card bg-light mt-5">
-				<div class="card-header bg-warning text-white text-center"><strong>Listado de Bodegas</strong></div>
+				<div class="card-header bg-warning text-white text-center"><strong>Listado de Categorías</strong></div>
 				<div class="card-body">
 					<table class="table">
 						<thead>
-							<legend>Lista de Contactos</legend>
+							<legend>Lista de Categorias</legend>
 							<tr>
 								<th><strong>ID</strong></th>
-								<th><strong>Precio</strong></th>
 								<th><strong>Nombre</strong></th>
-								<th><strong>Bodega</strong></th>
-								<th><strong>Ingreso</strong></th>
+								<th><strong>Opciones</strong></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -56,8 +54,6 @@
 										<td><c:out value="${material.getIdMaterial()}"></c:out></td>
 										<td><c:out value="${material.getPrecio()}"></c:out></td>
 										<td><c:out value="${material.getNombreMaterial()}"></c:out></td>
-										<td><c:out value="${material.getBodega().getNombre()}"></c:out></td>
-										<td><c:out value="${material.getIngreso()}"></c:out></td>
 									</tr>
 								</c:forEach>
 						</tbody>
