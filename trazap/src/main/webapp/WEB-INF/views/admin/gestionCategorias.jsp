@@ -118,7 +118,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modificar Docente</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Modificar Categoría</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -149,31 +149,31 @@
 		
 		$.ajax({
 			method: 'GET',
-			url: '/trazap/CategoriasApiController'
-		}).done((data) => {
-			data.forEach((elemento) => {
+			url: '/trazap/admin/categoriasApi'
+		}).done((datos) => {
+			console.log(datos);
+			datos.body.forEach((elemento) => {
+				console.log(elemento);
 				elemento.opciones = elemento.opciones = '<button class="btn btn-xs btn-danger mr-3" onclick="deleteById(' + elemento.idCategoria + ')"><i class="fa-solid fa-trash-can"></i></button><button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modalUpdate" onclick="findById(' + elemento.idCategoria + ')"><i class="fa-solid fa-pen-to-square"></i></button>';
 			});
 			var $table = $('#tableCategorias');
-			$table.bootstrapTable({data: data});
-		}).fail((data) => {
-			console.log(data);
+			$table.bootstrapTable({data: datos.body});
+		}).fail((datos) => {
+			console.log(datos);
 		});
 		
 		function create(){
 			$.ajax({
 				method: 'POST',
-				url: '/trazap/CategoriasApiController',
-				data: {
-					'proceso': 1,
-					'nombre': $('#nombreCategoriaCreate').val(),
-				}
+				url: '/trazap/admin/categoriasApi',
+				contentType: 'application/json',
+				data: JSON.stringify({
+					'nombre': $('#nombreCategoriaCreate').val()
+				})
 			}).done((resp) => {
 				console.log('done');
 				console.log(resp);
-				var resultado = JSON.parse(resp);
-				console.log(resultado);
-				if(resultado.result){
+				if(resp.messageList[0].type == 'OK'){
 					$('#modalCreate').modal('hide');
 					alert("Se ha creado correctamente el registro.");
 					location.reload();
@@ -188,14 +188,12 @@
 		
 		function deleteById(id){
 			$.ajax({
-				method: 'POST',
-				url: '/trazap/CategoriasApiController',
-				data: {'proceso': 2, 'idCategoria': id}
+				method: 'DELETE',
+				url: '/trazap/admin/categoriasApi',
+				data: {'idCategoria': id}
 			}).done((resp) => {
 				console.log('done');
-				var resultado = JSON.parse(resp);
-				console.log(resultado);
-				if(resultado.result){
+				if(resp.messageList[0].type == 'OK'){
 					alert('Se ha eliminado el registro correctamente.');
 				}else{
 					alert('Hubo un error.');
@@ -208,9 +206,9 @@
 		
 		function getById(id){
 			$.ajax({
-				method: 'POST',
-				url: '/trazap/CategoriasApiController',
-				data: {'proceso': 4,'idCategoria': id}
+				method: 'GET',
+				url: '/trazap/admin/categoriasApi',
+				data: {'idCategoria': id}
 			}).done((resp) => {
 				console.log(resp);
 				$('#idCategoriaUpdate').text(resp.idCategoria);
@@ -224,17 +222,14 @@
 			var idCategoria = $('#idCategoriaUpdate').text();
 			var nombre = $('#nombreCategoriaUpdate').val();
 			$.ajax({
-				method: 'POST',
-				url: '/trazap/gestionCategoriasController',
-				data:{
-					'proceso': 3,
+				method: 'PUT',
+				url: '/trazap/admin/categoriasApi',
+				data: JSON.stringify({
 					'idCategoria': $('#idCategoriaUpdate').text(),
 					'nombre': $('#nombreCategoriaUpdate').val(),
-				}
+				})
 			}).done((resp) => {
-				var resultado = JSON.parse(resp);
-				console.log(resp);
-				if(resultado.result){
+				if(resp.messageList[0].type == 'OK'){
 					alert('Se ha modificado el registro correctamente.');
 					$('#modalUpdate').modal('hide');
 				}else{
