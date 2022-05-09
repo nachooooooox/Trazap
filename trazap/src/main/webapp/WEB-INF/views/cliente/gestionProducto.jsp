@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Gestión Bodega</title>
+<title>Gestión Producto</title>
 <!-- Jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -35,8 +35,8 @@
 			<div class="collapse navbar-collapse ml-5 mr-5" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link" href="/trazap/user/">Inicio</a></li>
-					<li class="nav-item active"><a class="nav-link" href="/trazap/user/gestionBodegas">Gestión Bodega</a></li>
-					<li class="nav-item"><a class="nav-link" href="/trazap/user/gestionProductos">Gestión Productos</a></li>
+					<li class="nav-item"><a class="nav-link" href="/trazap/user/gestionBodegas">Gestión Bodega</a></li>
+					<li class="nav-item active"><a class="nav-link" href="/trazap/user/gestionProductos">Gestión Productos</a></li>
 				</ul>
 				<a class="btn btn-sm btn-danger" href="/trazap/logout" style="float: right">Salir</a>
 			</div>
@@ -45,7 +45,7 @@
 	<div class="container">
 		<div class="card bg-light mt-5">
 			<div class="card-header bg-warning text-white text-center">
-				<strong>Listado de Bodegas</strong>
+				<strong>Listado de Productos</strong>
 				<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalCreate" style="float: right">Agregar</button>
 			</div>
 			<div class="card-body">
