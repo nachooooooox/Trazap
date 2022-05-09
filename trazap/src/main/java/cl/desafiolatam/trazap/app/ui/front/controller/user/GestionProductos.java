@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UserController {
+public class GestionProductos {
 
-	@GetMapping("/user")
-	public String getHome() {
-		return "/cliente/home";
+	@GetMapping("/user/gestionProductos")
+	public String gestionBodegas() {
+		return "/cliente/gestionProducto";
 	}
 }

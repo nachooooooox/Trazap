@@ -18,7 +18,7 @@ import cl.desafiolatam.trazap.app.repository.dao.model.Bodegas;
 import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 
 @RestController
-@RequestMapping("/bodegas")
+@RequestMapping("/user/bodegasApi")
 public class BodegaController {
 	
 	@Autowired
