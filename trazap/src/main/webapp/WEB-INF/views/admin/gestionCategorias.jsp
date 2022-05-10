@@ -145,7 +145,7 @@
 		</div>
 	</div>
 
-	<script>
+	<script type="text/javascript">
 		
 		$.ajax({
 			method: 'GET',
@@ -189,8 +189,8 @@
 		function deleteById(id){
 			$.ajax({
 				method: 'DELETE',
-				url: '/trazap/admin/categoriasApi',
-				data: {'idCategoria': id}
+				contentType: 'application/json',
+				url: '/trazap/admin/categoriasApi/' + id
 			}).done((resp) => {
 				console.log('done');
 				if(resp.messageList[0].type == 'OK'){
@@ -204,29 +204,28 @@
 			});
 		}
 		
-		function getById(id){
+		function findById(id){
 			$.ajax({
 				method: 'GET',
-				url: '/trazap/admin/categoriasApi',
-				data: {'idCategoria': id}
+				contentType: 'application/json',
+				url: '/trazap/admin/categoriasApi/' + id
 			}).done((resp) => {
 				console.log(resp);
-				$('#idCategoriaUpdate').text(resp.idCategoria);
-				$('#nombreCategoriaUpdate').val(resp.nombre);
+				$('#idCategoriaUpdate').text(resp.body.idCategoria);
+				$('#nombreCategoriaUpdate').val(resp.body.nombre);
+				$('#modalUpdate').modal('show');
 			}).fail((error) => {
 				console.log(error);
 			});
 		}
 		
 		function update(){
-			var idCategoria = $('#idCategoriaUpdate').text();
-			var nombre = $('#nombreCategoriaUpdate').val();
 			$.ajax({
 				method: 'PUT',
-				url: '/trazap/admin/categoriasApi',
+				contentType: 'application/json',
+				url: '/trazap/admin/categoriasApi/' + $('#idCategoriaUpdate').text(),
 				data: JSON.stringify({
-					'idCategoria': $('#idCategoriaUpdate').text(),
-					'nombre': $('#nombreCategoriaUpdate').val(),
+					'nombre': $('#nombreCategoriaUpdate').val()
 				})
 			}).done((resp) => {
 				if(resp.messageList[0].type == 'OK'){
