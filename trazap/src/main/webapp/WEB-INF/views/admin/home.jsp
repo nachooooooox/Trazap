@@ -36,7 +36,7 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link" href="/trazap/admin/">Inicio</a></li>
 					<li class="nav-item"><a class="nav-link" href="/trazap/admin/gestionCategorias">Gestión Categorías</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Gestión Tipos de Productos</a></li>
+					<li class="nav-item"><a class="nav-link" href="/trazap/admin/gestionTipoProducto">Gestión Tipos de Productos</a></li>
 				</ul>
 				<a class="btn btn-sm btn-danger" href="/trazap/logout" style="float: right">Salir</a>
 			</div>
