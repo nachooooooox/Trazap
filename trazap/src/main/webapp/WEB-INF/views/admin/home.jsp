@@ -57,7 +57,7 @@
 				<div class="card bg-light mt-5">
 					<div class="card-body">
 						<p>Sistema que permite gestionar los tipos de productos en bodegas, en donde se puede ver, crear, eliminar y modificar </p>
-						<a class="btn btn-sm btn-primary" href="#">IR</a>
+						<a class="btn btn-sm btn-primary" href="/trazap/admin/gestionTipoProducto">IR</a>
 					</div>
 				</div>
 			</div>

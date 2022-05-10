@@ -10,11 +10,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tipo_productos")
-@SequenceGenerator(name="TipoProductos_idTipoProducto_seq", initialValue = 1, allocationSize = 1, sequenceName = "TipoProductos_idTipoProducto_seq")
+@SequenceGenerator(name="tipo_productos_id_tipo_producto_seq", initialValue = 1, allocationSize = 1, sequenceName = "tipo_productos_id_tipo_producto_seq")
 public class TipoProducto {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="TipoProductos_idTipoProducto_seq")
-	@Column(name = "idTipoProductos")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator ="tipo_productos_id_tipo_producto_seq")
+	@Column(name = "idtipoproductos")
 	private int idTipoProducto;
 	private String descripcion;
 	
