@@ -22,7 +22,6 @@ import cl.desafiolatam.trazap.app.service.response.ResponseServiceObject;
 
 @RestController
 @RequestMapping("/admin/categoriasApi")
-//@CrossOrigin(origins = "*", methods = {RequestMethod})
 public class CategoriasApiController {
 	
 	@Autowired
@@ -34,7 +33,7 @@ public class CategoriasApiController {
 		return new ResponseEntity<ResponseServiceObject>(categoriasDelegate.findAll(), HttpStatus.OK);
 	}
 	
-	@GetMapping(path = "{idCategoria}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "{idCategoria}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseServiceObject> getCategoria(@PathVariable Integer idCategoria) throws ServiceException{
 		return new ResponseEntity<ResponseServiceObject>(categoriasDelegate.findById(idCategoria), HttpStatus.OK);
 	}
@@ -44,12 +43,12 @@ public class CategoriasApiController {
 		return new ResponseEntity<ResponseServiceObject>(categoriasDelegate.create(categorias), HttpStatus.OK);
 	}
 	
-	@PutMapping(path = "{idCategoria}")
+	@PutMapping(path = "{idCategoria}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseServiceObject> update(@PathVariable Integer idCategoria, @RequestBody Categorias categorias){
 		return new ResponseEntity<ResponseServiceObject>(categoriasDelegate.update(idCategoria, categorias), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(path = "{idCategoria}")
+	@DeleteMapping(path = "{idCategoria}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseServiceObject> delete(@PathVariable Integer idCategoria){
 		return new ResponseEntity<ResponseServiceObject>(categoriasDelegate.delete(idCategoria), HttpStatus.OK);
 	}
